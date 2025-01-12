@@ -26,6 +26,9 @@ endif
 ifdef MRBC_USE_HAL_RP2040
   MRBC_USE_HAL = ../hal/rp2040
 endif
+ifdef MRBC_USE_HAL_UNREAL
+  MRBC_USE_HAL = ../hal/unreal
+endif
 
 ifdef MRBC_USE_HAL
   HAL_DIR = $(MRBC_USE_HAL)

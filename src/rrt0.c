@@ -11,6 +11,7 @@
 */
 
 /***** Feature test switches ************************************************/
+
 /***** System headers *******************************************************/
 //@cond
 #include "vm_config.h"
@@ -34,6 +35,7 @@
 #include "rrt0.h"
 #include "hal.h"
 
+#if !defined(MRBC_NO_SCHEDULER) || !MRBC_NO_SCHEDULER
 
 /***** Macros ***************************************************************/
 #ifndef MRBC_SCHEDULER_EXIT
@@ -1603,3 +1605,5 @@ void pqall(void)
   hal_enable_irq();
 }
 #endif
+
+#endif  // MRBC_NO_SCHEDULER
