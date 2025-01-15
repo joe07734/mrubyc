@@ -169,6 +169,7 @@ void mrbc_vm_close(struct VM *vm);
 void mrbc_vm_begin(struct VM *vm);
 void mrbc_vm_end(struct VM *vm);
 int mrbc_vm_run(struct VM *vm);
+void mrbc_vm_run_method(struct VM *vm, mrbc_value *recv, mrbc_method *method);
 
 
 /***** Inline functions *****************************************************/

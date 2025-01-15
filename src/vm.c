@@ -444,6 +444,36 @@ void mrbc_vm_close( struct VM *vm )
 }
 
 
+//================================================================
+/*! Run a method.
+
+  @param  vm  Pointer to VM
+*/
+void mrbc_vm_run_method( struct VM *vm, mrbc_value *recv, mrbc_method *method )
+{
+  static uint8_t stop_inst[2] = {OP_STOP, 0};
+
+  /* "return" to a stop instruction */
+  vm->inst = stop_inst;
+
+  /* set self */
+  mrbc_decref(&vm->cur_regs[0]);
+  vm->cur_regs[0] = *recv;
+  mrbc_incref(&vm->cur_regs[0]);
+
+  /* set up call info */
+  /* TODO: args */
+  mrbc_callinfo *callinfo = mrbc_push_callinfo(vm, method->sym_id, 0, 0);
+  callinfo->own_class = find_class_by_object(recv);
+  vm->cur_irep = method->irep;
+  vm->inst = vm->cur_irep->inst;
+
+  mrbc_vm_run(vm);
+
+  /* TODO: return value */
+}
+
+
 /***** opecode functions ****************************************************/
 #if defined(MRBC_SUPPORT_OP_EXT)
 #define EXT , int ext

@@ -24,6 +24,7 @@ sample_no_scheduler: sample_no_scheduler.c $(LIBMRUBYC)
 sample_include: sample_include.c $(LIBMRUBYC)
 sample_concurrent: sample_concurrent.c $(LIBMRUBYC)
 sample_myclass: sample_myclass.c $(LIBMRUBYC)
+sample_unreal: sample_unreal.c $(LIBMRUBYC)
 
 clean:
 	@rm -rf $(TARGETS) *.o *.dSYM *~
